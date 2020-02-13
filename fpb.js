@@ -1,27 +1,64 @@
-function cariMedian(arr) {
+function fpb(angka1, angka2) {
     // you can only write your code here!
 
 
-    var indexMedian 
-    var median  
 
-    if(arr.length%2 !=0){
-        // indexMedian = (arr.length-1)/2
-        // median = arr[indexMedian];
 
-        median = arr[(arr.length-1)/2];
-        return median;
+    //ini untuk angka 1
 
-    }else if(arr.length%2 == 0){
-        indexMedian = (arr.length)/2
-        median = (arr[indexMedian] + arr[indexMedian-1])/2
 
-    return median;
+    var tampung1 = []
+    for (let i = 0; i <= angka1; i++) {
+
+        if (angka1 % i == 0) {
+
+            tampung1.push(i)
+        }
+
     }
-}    
-  // TEST CASES
-  console.log(cariMedian([1, 2, 3, 4, 5])); // 3
-  console.log(cariMedian([1, 3, 4, 10, 12, 13])); // 7
-  console.log(cariMedian([3, 4, 7, 6, 10])); // 7
-  console.log(cariMedian([1, 3, 3])); // 3
-  console.log(cariMedian([7, 7, 8, 8])); // 7.5
+    // console.log(tampung1)
+
+
+    //ini untuk angka 2
+
+    var tampung2 = []
+    for (let i = 0; i <= angka2; i++) {
+
+        if (angka2 % i == 0) {
+
+            tampung2.push(i)
+        }
+
+    }
+    // console.log(tampung2)
+
+
+
+    var hasil = []
+
+
+    for (let i = 0; i < tampung1.length; i++) {
+        for (let j = 0; j < tampung2.length; j++) {
+
+            if (tampung1[i] == tampung2[j]) {
+
+                hasil.push(tampung1[i])
+
+            }
+        }
+
+
+        var hasilAkhir = hasil[hasil.length - 1]
+
+    }
+
+
+    return hasilAkhir;
+}
+
+// TEST CASES
+console.log(fpb(12, 16)); // 4
+console.log(fpb(50, 40)); // 10
+console.log(fpb(22, 99)); // 11
+console.log(fpb(24, 36)); // 12
+console.log(fpb(17, 23)); // 1

@@ -24,9 +24,9 @@ function countProfit(shoppers) {
 
     }
 
+    hasil.push(temp)
   }
 
-  hasil.push(temp)
 
   // console.log(hasil)
 
@@ -36,18 +36,24 @@ function countProfit(shoppers) {
 
     for (let j = 0; j < hasil.length; j++) {
 
-      if (shoppers[i].product == hasil[j].product) {
+      if (shoppers[i].product == hasil[j].product && hasil[j].leftOver >= shoppers[i].amount) {
+
 
         hasil[j].shoppers.push(shoppers[i].name);
+
+        hasil[j].leftOver -= shoppers[i].amount
+
+        hasil[j].totalProfit += shoppers[i].amount * listBarang[j][1]
       }
 
     }
 
   }
 
-  console.log(hasil)
+  // console.log(hasil)
 
 
+  return hasil
 
 
 }
@@ -67,7 +73,7 @@ console.log(countProfit([{ name: 'Windi', product: 'Sepatu Stacattu', amount: 2 
 //   leftOver: 1,
 //   totalProfit: 0 } ]
 
-// console.log(countProfit([{ name: 'Windi', product: 'Sepatu Stacattu', amount: 8 }, { name: 'Vanessa', product: 'Sepatu Stacattu', amount: 10 }, { name: 'Rani', product: 'Sweater Uniklooh', amount: 1 }, { name: 'Devi', product: 'Baju Zoro', amount: 1 }, { name: 'Lisa', product: 'Baju Zoro', amount: 1 }]));
+console.log(countProfit([{ name: 'Windi', product: 'Sepatu Stacattu', amount: 8 }, { name: 'Vanessa', product: 'Sepatu Stacattu', amount: 10 }, { name: 'Rani', product: 'Sweater Uniklooh', amount: 1 }, { name: 'Devi', product: 'Baju Zoro', amount: 1 }, { name: 'Lisa', product: 'Baju Zoro', amount: 1 }]));
 // // [ { product: 'Sepatu Stacattu',
 // //     shoppers: [ 'Windi' ],
 // //     leftOver: 2,
@@ -80,7 +86,7 @@ console.log(countProfit([{ name: 'Windi', product: 'Sepatu Stacattu', amount: 2 
 // //     shoppers: [ 'Rani' ],
 // //     leftOver: 0,
 // //     totalProfit: 175000 } ]
-// console.log(countProfit([{ name: 'Windi', product: 'Sepatu Naiki', amount: 5 }]));
+console.log(countProfit([{ name: 'Windi', product: 'Sepatu Naiki', amount: 5 }]));
 // // [ { product: 'Sepatu Stacattu',
 // //     shoppers: [],
 // //     leftOver: 10,
@@ -93,4 +99,4 @@ console.log(countProfit([{ name: 'Windi', product: 'Sepatu Stacattu', amount: 2 
 // //     shoppers: [],
 // //     leftOver: 1,
 // //     totalProfit: 0 } ]
-// console.log(countProfit([])); //[]
+console.log(countProfit([])); //[]
